@@ -62,7 +62,7 @@ RSpec.describe Project do
       end
 
       it "calculates projected days remaining" do
-        expect(project.projected_days_remaining).to eq((5*21)/7.0)
+        expect(project.projected_days_remaining).to eq(15)
       end
 
       it 'knows if we are on schedule' do
