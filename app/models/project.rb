@@ -1,5 +1,6 @@
 class Project
-  attr_accessor :tasks
+  attr_accessor :tasks, :due_date
+
   def initialize
     @tasks = []
   end
@@ -14,6 +15,24 @@ class Project
 
   def remaining_size
     incomplete_tasks.sum(&:size)
+  end
+
+  def completed_velocity
+    tasks.select(&:part_of_velocity?).sum(&:points_toward_velocity)
+  end
+
+  def current_rate
+    completed_velocity * 1.0/21
+  end
+
+  def projected_days_remaining
+    remaining_size / current_rate
+  end
+
+  def on_schedule?
+    return false if projected_days_remaining.nan?
+
+    Time.current + projected_days_remaining.days < due_date
   end
 
   private
