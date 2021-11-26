@@ -5,7 +5,7 @@ class Project
   end
 
   def done?
-    tasks.all?(&:completed?)
+    incomplete_tasks.empty?
   end
 
   def total_size
@@ -13,7 +13,13 @@ class Project
   end
 
   def remaining_size
-    tasks.reject(&:completed?).sum(&:size)
+    incomplete_tasks.sum(&:size)
+  end
+
+  private
+
+  def incomplete_tasks
+    tasks.reject(&:completed?)
   end
 end
 
