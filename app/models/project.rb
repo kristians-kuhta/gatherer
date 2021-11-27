@@ -1,9 +1,8 @@
-class Project
-  attr_accessor :tasks, :due_date
+class Project < ApplicationRecord
+  has_many :tasks, dependent: :destroy
 
-  def initialize
-    @tasks = []
-  end
+  validates :name, presence: true
+  validates :due_date, presence: true
 
   def self.velocity_length_in_days
     21

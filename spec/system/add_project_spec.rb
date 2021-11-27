@@ -5,6 +5,7 @@ RSpec.describe 'Adding a project', type: :system do
     visit new_project_path
 
     fill_in 'Name', with: 'Project Runway'
+    fill_in 'Due date', with: 1.month.from_now.strftime('%d/%m/%Y')
     fill_in 'Tasks', with: "Choose Fabric:3\nMake it work:5"
     click_on 'Create Project'
     visit projects_path
