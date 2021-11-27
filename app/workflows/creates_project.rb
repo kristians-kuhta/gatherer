@@ -1,9 +1,11 @@
 class CreatesProject
   attr_reader :project
+
   def initialize(name: '', due_date:, task_string: '')
     @name = name
     @due_date = due_date
     @task_string = task_string
+    @succeed = false
   end
 
   def build
@@ -24,7 +26,11 @@ class CreatesProject
 
   def create
     build
-    project.save
+    @succeeded = project.save
+  end
+
+  def success?
+    @succeeded
   end
 
   private

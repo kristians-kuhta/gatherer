@@ -80,4 +80,18 @@ RSpec.describe CreatesProject, :aggregate_failures do
       expect(creator.project).not_to be_an_new_record
     end
   end
+
+  describe 'failure cases' do
+    it 'does not save a project without a name' do
+      creator = described_class.new(name: '', due_date: Time.current)
+      creator.create
+      expect(creator).not_to be_a_success
+    end
+
+    it 'does not save a project without a due date' do
+      creator = described_class.new(name: 'Some thing', due_date: nil)
+      creator.create
+      expect(creator).not_to be_a_success
+    end
+  end
 end
