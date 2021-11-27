@@ -10,7 +10,11 @@ RSpec.describe 'Adding a project', type: :system do
     click_on 'Create Project'
     visit projects_path
 
-    expect(page).to have_content('Project Runway')
-    expect(page).to have_content(8)
+    project = Project.find_by(name: 'Project Runway')
+    project_dom_id = "#project_#{project.id}"
+    project_name_dom_id = "#{project_dom_id}_name"
+    project_total_size_dom_id = "#{project_dom_id}_total_size"
+    expect(page).to have_selector("#{project_dom_id} #{project_name_dom_id}", text: 'Project Runway')
+    expect(page).to have_selector("#{project_dom_id} #{project_total_size_dom_id}", text: '8')
   end
 end

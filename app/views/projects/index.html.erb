@@ -10,9 +10,9 @@
   </thead>
   <tbody>
     <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.total_size %></td>
+      <tr id="<%=dom_id(project)%>">
+        <td id="<%=dom_id(project)%>_name"><%= project.name %></td>
+        <td id="<%=dom_id(project)%>_total_size"><%= project.total_size %></td>
       </tr>
     <% end %>
   </tbody>
