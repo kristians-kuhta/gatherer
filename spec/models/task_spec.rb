@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Task do
+  it_should_behave_like 'sizeable'
+
   let(:task) { Task.new }
 
   describe 'completion' do

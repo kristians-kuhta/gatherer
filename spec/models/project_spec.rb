@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Project do
+  it_should_behave_like 'sizeable'
+
   let(:project) { Project.new }
   let(:task) { Task.new }
 
@@ -32,7 +34,7 @@ RSpec.describe Project do
 
     describe 'blank project estimates' do
       it 'handles blank project' do
-        expect(project.total_size).to eq(0)
+        expect(project.size).to eq(0)
         expect(project.remaining_size).to eq(0)
         expect(project.completed_velocity).to eq(0)
         expect(project.current_rate).to eq(0)
@@ -47,7 +49,7 @@ RSpec.describe Project do
       end
 
       it 'can calculate total size' do
-        expect(project.total_size).to eq(15)
+        expect(project.size).to eq(15)
       end
       it 'can calculate remaining size' do
         expect(project.remaining_size).to eq(5)

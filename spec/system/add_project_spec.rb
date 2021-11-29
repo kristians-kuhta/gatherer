@@ -12,9 +12,9 @@ RSpec.describe 'Adding a project', type: :system do
     project = Project.find_by(name: 'Project Runway')
     project_dom_id = "#project_#{project.id}"
     project_name_dom_id = "#{project_dom_id}_name"
-    project_total_size_dom_id = "#{project_dom_id}_total_size"
+    project_size_dom_id = "#{project_dom_id}_size"
     expect(page).to have_selector("#{project_dom_id} #{project_name_dom_id}", text: 'Project Runway')
-    expect(page).to have_selector("#{project_dom_id} #{project_total_size_dom_id}", text: '8')
+    expect(page).to have_selector("#{project_dom_id} #{project_size_dom_id}", text: '8')
   end
 
   it 'does not allow not allow a user to create a project without a name and due date' do

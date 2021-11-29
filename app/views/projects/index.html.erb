@@ -12,7 +12,7 @@
     <% @projects.each do |project| %>
       <tr id="<%=dom_id(project)%>">
         <td id="<%=dom_id(project)%>_name"><%= project.name %></td>
-        <td id="<%=dom_id(project)%>_total_size"><%= project.total_size %></td>
+        <td id="<%=dom_id(project)%>_size"><%= project.size %></td>
       </tr>
     <% end %>
   </tbody>
